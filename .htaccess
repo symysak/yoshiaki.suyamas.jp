@@ -1,0 +1,23 @@
+Options -Indexes
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase / 
+# httpからの通信を、httpsにリダイレクト（www有り無し）
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*$) https://yoshiaki.suyamas.jp/$1 [R=301,L]
+</IfModule>
+
+SetEnvIf User-Agent "Googlebot" shutout
+SetEnvIf User-Agent "Slurp" shutout
+SetEnvIf User-Agent "msnbot" shutout
+ 
+order Allow,Deny
+Allow from all
+Deny from env=shutout
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
