@@ -1,2 +1,4 @@
 https://profile-site.pages.dev/*
   X-Robots-Tag: noindex
+https://*.profile-site.pages.dev/*
+  X-Robots-Tag: noindex
